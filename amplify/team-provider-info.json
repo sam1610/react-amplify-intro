@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-samdino-dev-92243-authRole",
+      "UnauthRoleArn": "arn:aws:iam::616898045177:role/amplify-samdino-dev-92243-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::616898045177:role/amplify-samdino-dev-92243-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-samdino-dev-92243-deployment",
+      "UnauthRoleName": "amplify-samdino-dev-92243-unauthRole",
+      "StackName": "amplify-samdino-dev-92243",
+      "StackId": "arn:aws:cloudformation:us-east-1:616898045177:stack/amplify-samdino-dev-92243/a9ee2db0-2f3e-11ed-913c-0ea29613d183",
+      "AmplifyAppId": "d2n6iru4dx7jf0"
+    },
+    "categories": {
+      "auth": {
+        "samdinofade60ed": {}
+      }
+    }
+  }
+}

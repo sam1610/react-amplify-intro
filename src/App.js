@@ -1,14 +1,18 @@
 import './App.css';
 import  React, { useEffect, useState } from 'react';
 import {  withAuthenticator } from "@aws-amplify/ui-react";
-import { API } from 'aws-amplify';
+import {Amplify,  API } from 'aws-amplify';
 import { createPet, deletePet } from './graphql/mutations';
 import { listPets } from './graphql/queries';
 import Dino  from "./components/Dino"
 import TextIdentify from './components/TextIdentify';
+import TextProcess from './components/TextProcess';
+import { AmazonAIPredictionsProvider } from "@aws-amplify/predictions";
+import Translate from './components/Translate';
 
 
 
+Amplify.addPluggable(new AmazonAIPredictionsProvider())
 function App() {
   const [petData, setpetData]= useState([])
   useEffect( () =>{
@@ -88,8 +92,11 @@ function App() {
         </ul>
       </main>
       <div syle={{width:"100%"}}>
-      <Dino width="100%"  height="500px"  rows={petData} />;
-      <TextIdentify />
+      <Dino width="100%"  height="200px"  rows={petData} />;
+  
+      <TextProcess />
+      <hr />
+      <Translate />
 
       </div>
     </div>

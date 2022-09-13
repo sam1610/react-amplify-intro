@@ -1,9 +1,8 @@
 import { Amplify, Auth, Predictions } from "aws-amplify";
-import { AmazonAIPredictionsProvider } from "@aws-amplify/predictions";
 import { useState } from "react";
 
 
-Amplify.addPluggable(new AmazonAIPredictionsProvider())
+
 
 function TextIdentify() {
 

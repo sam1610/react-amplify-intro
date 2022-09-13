@@ -4,27 +4,12 @@ import {  withAuthenticator } from "@aws-amplify/ui-react";
 import { API } from 'aws-amplify';
 import { createPet, deletePet } from './graphql/mutations';
 import { listPets } from './graphql/queries';
-import { version } from 'react';
-import DataGrid from 'react-data-grid';
+import Dino  from "./components/Dino"
+import TextIdentify from './components/TextIdentify';
+
 
 
 function App() {
-  console.log(version);
-
-  // const cols= [
-  //   {field:"name", headerName:"Name"},
-  //   {field:"description`", headerName:"Description"},
-  //   {field:"petType", headerName:"petType"}
-  // ];
-  // const rows=[{ name:"sam", description:" description v2", petType:"homoSapien"}];
-
-    const cols =[
-      {key:"name", name: "name"},
-      {key:"description", name: "description" },
-      {key:"petType", name: "petType"},
- 
-    ]
-   
   const [petData, setpetData]= useState([])
   useEffect( () =>{
     const fetchPets= async () => {
@@ -35,7 +20,6 @@ function App() {
     }
     fetchPets().then(
       pets=> {
-        console.log(pets[0])
         setpetData(pets)}
     );
     
@@ -94,21 +78,22 @@ function App() {
               margin:"10px",
               wodth:"200px"
             }}>
-              <article>
+              {/* <article>
                 <h3>{ pet.name} </h3>
                 <h3>{ pet.type} </h3>
                 <h3>{ pet.description} </h3>
-              </article>
+              </article> */}
             </li>
           ))}
         </ul>
       </main>
       <div syle={{width:"100%"}}>
-      <DataGrid columns={cols} rows={petData} />;
+      <Dino width="100%"  height="500px"  rows={petData} />;
+      <TextIdentify />
 
       </div>
     </div>
   );
 }
 
-export default withAuthenticator(App);
+export default withAuthenticator(App, {includeGreetings:true});

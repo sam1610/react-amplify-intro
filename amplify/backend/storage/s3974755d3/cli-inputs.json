@@ -1,0 +1,14 @@
+{
+  "resourceName": "s3974755d3",
+  "policyUUID": "974755d3",
+  "bucketName": "audio-repo-bk",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "S3Trigger2adb5c30",
+  "groupAccess": {}
+}

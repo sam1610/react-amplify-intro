@@ -14,6 +14,12 @@
     "categories": {
       "auth": {
         "samdinofade60ed": {}
+      },
+      "function": {
+        "S3Trigger2adb5c30": {
+          "deploymentBucketName": "amplify-samdino-dev-92243-deployment",
+          "s3Key": "amplify-builds/S3Trigger2adb5c30-7a72525a7368794f696f-build.zip"
+        }
       }
     }
   }

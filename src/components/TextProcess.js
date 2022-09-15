@@ -1,9 +1,6 @@
-import React, { useState } from 'react';
-import { Amplify, Predictions } from "aws-amplify";
-import  { AmazonAIPredictionsProvider } from '@aws-amplify/predictions';
- 
-import awsconfig from '../aws-exports';
- 
+import { useState } from 'react';
+import { Predictions } from "aws-amplify";
+  
 // Amplify.addPluggable(new AmazonAIPredictionsProvider());
 // Amplify.configure(awsconfig);
  
@@ -52,10 +49,14 @@ function TextToSpeech() {
   );
 }
  
-function TextProcess() {
+function TextProcess () {
+ 
+
+ 
+
   return (
     <div className="App">
-      <h1>Text to Speech</h1>
+      <h1>Text to Speech </h1>
       <TextToSpeech />
     </div>
   );

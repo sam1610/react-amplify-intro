@@ -1,4 +1,4 @@
-import { Amplify, Auth, Predictions } from "aws-amplify";
+import { Predictions, Storage } from "aws-amplify";
 import { useState } from "react";
 
 
@@ -9,7 +9,7 @@ function TextIdentify() {
     const [response, setResponse] = useState("You can add a photo ....");
 
 
-    function identityFromFile(e) {
+    const  identityFromFile= async (e)=> {
 
 
 
@@ -19,6 +19,10 @@ function TextIdentify() {
         if (!file) {
             return;
         }
+        const result= await Storage.put( file.name, file ,{
+            contentType: file.type
+        });
+        console.log( result);
         Predictions.identify({
             text: {
                 source: { file },
@@ -34,6 +38,10 @@ function TextIdentify() {
             <div style={{ padding: 50 }}>
                 <h3> Text identification</h3>
                 <input type="file"  onChange={identityFromFile}/>
+                
+
+               
+
                 <p style={{
                     backgroundColor: 'black', color: 'white', padding: 20
                 }}> {response}</p>

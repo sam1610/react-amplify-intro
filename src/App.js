@@ -1,7 +1,7 @@
 import './App.css';
 import  React, { useEffect, useState } from 'react';
 import {  withAuthenticator } from "@aws-amplify/ui-react";
-import {Amplify,  API } from 'aws-amplify';
+import {Amplify,  API , Auth} from 'aws-amplify';
 import { createPet, deletePet } from './graphql/mutations';
 import { listPets } from './graphql/queries';
 import Dino  from "./components/Dino"
@@ -15,6 +15,10 @@ import Translate from './components/Translate';
 Amplify.addPluggable(new AmazonAIPredictionsProvider())
 function App() {
   const [petData, setpetData]= useState([])
+  const [currentUser, setCurrentUser]=useState()
+  Auth.currentUserInfo().then( e=> setCurrentUser(e.attributes.email))
+  Auth.currentUserPoolUser().then(e=> console.log(e.pool)) 
+ 
   useEffect( () =>{
     const fetchPets= async () => {
       const res= await API.graphql({
@@ -35,7 +39,7 @@ function App() {
         {query:createPet, 
         variables:{
           input:{
-            name: e.target.petName.value  ,
+            name: currentUser  ,
             description:e.target.description.value,
             petType: e.target.petType.value
           }
@@ -93,7 +97,8 @@ function App() {
       </main>
       <div syle={{width:"100%"}}>
       <Dino width="100%"  height="200px"  rows={petData} />;
-  
+      <TextIdentify/>
+      <hr />
       <TextProcess />
       <hr />
       <Translate />

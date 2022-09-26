@@ -9,6 +9,9 @@ import TextIdentify from './components/TextIdentify';
 import TextProcess from './components/TextProcess';
 import { AmazonAIPredictionsProvider } from "@aws-amplify/predictions";
 import Translate from './components/Translate';
+import StoragePut from './components/StoragePut';
+import AudioS3 from './components/AudioS3';
+import RecSpeech from './components/Recorder2Mp3';
 
 
 
@@ -96,7 +99,10 @@ function App() {
         </ul>
       </main>
       <div syle={{width:"100%"}}>
-      <Dino width="100%"  height="200px"  rows={petData} />;
+      {/* <Dino width="100%"  height="200px"  rows={petData} />; */}
+      <RecSpeech  />
+      <StoragePut  />
+      <AudioS3 />
       <TextIdentify/>
       <hr />
       <TextProcess />

@@ -13,7 +13,8 @@
     },
     "categories": {
       "auth": {
-        "samdinofade60ed": {}
+        "samdinofade60ed": {},
+        "true": {}
       },
       "function": {
         "S3Trigger2adb5c30": {

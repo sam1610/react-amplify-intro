@@ -27,14 +27,21 @@ function TextToSpeech() {
       .catch(err => setResponse(JSON.stringify(err, null, 2)))
   }
 
+
+
   function setText(event) {
     setTextToGenerateSpeech(event.target.value);
   }
 
-  function play() {
+  const  play=  ()=> {
     var audio = new Audio();
     audio.src = audioStream;
     audio.play();
+
+    // let file = await fetch(url).
+    // then(r => r.blob()).
+    // then(blobFile => new File(
+    //   [blobFile], "fileNameGoesHere", { type: "image/png" }))
   }
   return (
     <div className="Text">

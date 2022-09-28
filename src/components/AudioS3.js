@@ -4,31 +4,24 @@ import { ReactMediaRecorder } from "react-media-recorder";
 
 
 
-const Audio2S3= async (blb, msg)=>{
-console.log(msg)
+const Audio2S3= async (blb)=>{
 await fetch(blb)
   .then(
     r=>r.blob())
-    .then( blob=> Storage.put("audio26_1", blob,{
-      contentType:blob.type,
-      level:"protected"
-    }
+    .then( 
+      blob => {try {
+         Storage.put(`audio#${Date.now()}`, blob, {
+        
+            contentType:"audio/mp3",
+            level:"protected"
+        })
+      } catch (err) {
+        console.log("File upload Error", err);
+      }}
 
-))}
-// const file= new File([blb], "audio1.mp3",{
-//           type:blb.type,
-//           lastModified: new Date().getTime()
-//       })
-// try {
-//   await Storage.put("Audio_test", file, {
-//     // await Storage.put(`${Date.now()}-${file}`, file, {
-  
-//       contentType:"audio/mpeg",
-//       level:"protected"
-//   })
-// } catch (err) {
-//   console.log("File upload Error", err);
-// }}
+)}
+
+
 // const resp = await fetch(blb)
 // const blob= await resp.blob()
 
@@ -53,9 +46,10 @@ await fetch(blb)
 //     }
 //   )
 // }
-const  AudioS3 =()=>{ 
+const  AudioS3 =(props)=>{ 
 return (
-  // reactmic npm has teh trend actually
+  // Probleme de passage de param   onClick={ ()=> function(rapm)}
+  //droite d'acces au bucket , links s3, ul , SignedUrl
   <div>
     <ReactMediaRecorder
       audio
@@ -65,23 +59,25 @@ return (
           <p>{status}</p>
           <button onClick={startRecording}>Start Recording</button>
           <button onClick={stopRecording}>Stop Recording</button>
-          <audio src={mediaBlobUrl} controls autoPlay />
-          <audio src="./sample-0.mp3" controls autoPlay >Check your Browser Audio </audio>
+          <audio src={mediaBlobUrl} controls autoPlay /> 
+          <audio src="https://audio-repo-bk92243-dev.s3.amazonaws.com/public/math.hack2020%40gmail.com%231664189897344" controls autoplay></audio>
       
           
           
-          <button onClick={
+          {/* <button onClick={
             async ()=>{
               await fetch(mediaBlobUrl)
                 .then(
                   r=>r.blob())
-                  .then( blob=> Storage.put("audio26_2", blob,{
+          .then( blob=> Storage.put(`${props.user}#${Date.now()}`, blob,{
                     contentType:"audio/mp3",
-                    level:"protected"
+                    level:"public"
                   }
               
               ))}
-          }>Upload Recording</button>
+          }>Upload Recording</button> */}
+
+            <button  onClick={()=>Audio2S3(mediaBlobUrl) }>upload Audio</button>
         </div>
       )}
     />

@@ -99,10 +99,11 @@ function App() {
         </ul>
       </main>
       <div syle={{width:"100%"}}>
-      {/* <Dino width="100%"  height="200px"  rows={petData} />; */}
+      <Dino width="100%"  height="200px"  rows={petData} />;
+  
       <RecSpeech  />
       <StoragePut  />
-      <AudioS3 />
+      <AudioS3  user={currentUser}/>
       <TextIdentify/>
       <hr />
       <TextProcess />

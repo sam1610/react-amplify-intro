@@ -18,6 +18,7 @@ root.render(
   <React.StrictMode>
     <AmplifyProvider> 
   <h1> Compte:</h1>
+  {/* <audio src="./src/sample-1.mp3" controls autoPlay />  */}
     <App />
     </AmplifyProvider>
   </React.StrictMode>

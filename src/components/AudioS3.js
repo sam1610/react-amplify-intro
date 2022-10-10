@@ -4,6 +4,7 @@ import { useState } from "react";
 import { ReactMediaRecorder } from "react-media-recorder";
 
 const  AudioS3 =(props)=>{ 
+  const UrlPath='https://audio-repo-bk92243-dev.s3.amazonaws.com/public/'
   const [audioUrl, setaudioUrl] = useState("")
   const Audio2S3= async (blb, user)=>{
     // console.log(" actual User:", user);
@@ -44,7 +45,7 @@ return (
           <button onClick={stopRecording}>Stop Recording</button>
           <audio src={mediaBlobUrl} controls autoPlay /> 
           <audio 
-          src={`https://audio-repo-bk92243-dev.s3.amazonaws.com/public/${audioUrl}`}
+          src={`${UrlPath}${audioUrl}`}
 
                 controls autoPlay></audio>
             <button  onClick={()=>Audio2S3(mediaBlobUrl, props.user) }>Upload Audio</button>

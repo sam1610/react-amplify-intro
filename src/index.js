@@ -7,6 +7,7 @@ import awsmobile from "./aws-exports";
 import { Amplify } from "aws-amplify";
 import { AmplifyProvider } from "@aws-amplify/ui-react";
 import "@aws-amplify/ui-react/styles.css"
+import Navbar from './components/Navbar';
 
 
 Amplify.configure(awsmobile)
@@ -17,9 +18,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <AmplifyProvider> 
-  <h1> Compte:</h1>
+  
   {/* <audio src="./src/sample-1.mp3" controls autoPlay />  */}
-    <App />
+    <Navbar />
     </AmplifyProvider>
   </React.StrictMode>
 );

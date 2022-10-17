@@ -1,11 +1,15 @@
 import { useState } from 'react';
-import { Predictions } from "aws-amplify";
+import { Predictions, Auth } from "aws-amplify";
+import { AudioClass } from "./AudioClass";
   
 // Amplify.addPluggable(new AmazonAIPredictionsProvider());
 // Amplify.configure(awsconfig);
  
  
 function TextToSpeech() {
+  const [currentUser, setCurrentUser]=useState()
+  Auth.currentUserInfo().then( e=> setCurrentUser(e.attributes.email))
+
   const [response, setResponse] = useState("...")
   const [textToGenerateSpeech, setTextToGenerateSpeech] = useState("write to speech");
   const [audioStream, setAudioStream] = useState();
@@ -26,8 +30,6 @@ function TextToSpeech() {
     })
       .catch(err => setResponse(JSON.stringify(err, null, 2)))
   }
-
-
 
   function setText(event) {
     setTextToGenerateSpeech(event.target.value);
@@ -50,17 +52,16 @@ function TextToSpeech() {
         <input value={textToGenerateSpeech} onChange={setText}></input>
         <button onClick={generateTextToSpeech}>Text to Speech</button>
         <h3>{response}</h3>
-        <button onClick={play}>play</button>
+        {/* <button onClick={play}>play</button> */}
+        <audio  src={audioStream} controls autoPlay></audio>
+         {/* <AudioClass  mediaSrc={audioStream}  user={currentUser}/> */}
+
       </div>
     </div>
   );
 }
  
 function TextProcess () {
- 
-
- 
-
   return (
     <div className="App">
       <h1>Text to Speech </h1>

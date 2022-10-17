@@ -55,14 +55,18 @@ nav{
     justify-content: flex-start;
     position: fixed;
     top:90px;
-    right: 0px;
+    right: -300px;
     width: 300px;
     height: 100vh;
     background: #2a3239;
     box-shadow: 0 40px 60px rgba(0,0,0,0.1);
     padding: 40px 0 0 10px;
+    transition: 0.3s ease-in-out;
 }    
-#navbar {
+#navbar.active{
+    right: 0px;
+}
+#navbar li {
     margin-bottom: 25px;
 }
 #mobile {
